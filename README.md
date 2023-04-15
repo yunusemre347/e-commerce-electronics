@@ -8,9 +8,12 @@ npm create-next-app
 
 ```
 -typescript
+
 -import aliases are '@'
 
+
 -no eslint
+
 -no experimental app directory
 
 
@@ -27,7 +30,6 @@ npm install stripe --save
 
 npm install --save @sanity/client
 
-
 npm install --save next-sanity-image  
 
 npm install @stripe/stripe-js 
@@ -40,7 +42,7 @@ npm install react-icons --save
 
 
 ```
-## start next
+## start Next.js server
 ```bash
 npm run dev
 
