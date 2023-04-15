@@ -1,6 +1,6 @@
 This is an e-commerce project made with Next.js Sanity Stripe
 
-##Next.js Installation
+## Next.js Installation
 
 Create next app:
 ```bash
@@ -17,7 +17,7 @@ npm create-next-app
 -no experimental app directory
 
 
-##Packages Installation
+## Packages Installation
 ```bash
 
 npm install -g @sanity/cli
