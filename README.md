@@ -54,3 +54,13 @@ sanity start
 
 ```
 Say yes (y) to the following question.
+
+## Demo card
+
+if you want to test the payment you can use demo card :
+
+```bash
+Card no: 4242 4242 4242 4242
+date: 02/42
+cvc: 424
+```
