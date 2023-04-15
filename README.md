@@ -1,4 +1,4 @@
-This is an e-commerce project made with Next.js Sanity Stripe
+This is an e-commerce project made with Next.js, Sanity and Stripe
 
 ## Next.js Installation
 
