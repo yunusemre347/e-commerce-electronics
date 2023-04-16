@@ -25,7 +25,6 @@ const Cart = () => {
 
   //stripe
   const handleCheckout = async () => {
-console.log("saconsolejdskahdkas",{...cartItems})
     const stripe = await getStripe();
 
     const response = await fetch('/api/stripe', {
@@ -36,7 +35,7 @@ console.log("saconsolejdskahdkas",{...cartItems})
       body: JSON.stringify({cartItems}),
    
     });
-    
+
     if (response.status === 500) return; //this was statusCode
 
     const data = await response.json();
@@ -44,8 +43,18 @@ console.log("saconsolejdskahdkas",{...cartItems})
 
     stripe.redirectToCheckout({ sessionId: data.id });
   };
+
+ // Close cart when clicked outside
+  const handleCartWrapperClick = (event:any) => {
+    if (event.target === cartRef.current ) {
+      if (event.target.className.includes('cart-container')) {
+        return;
+      }
+      setShowCart?.(false);
+    }
+  };
   return (
-    <div className='cart-wrapper' ref={cartRef}>
+    <div className='cart-wrapper' ref={cartRef} onClick={handleCartWrapperClick}>
       <div className='cart-container'>
         <button
           type='button'

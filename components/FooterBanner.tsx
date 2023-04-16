@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { urlFor } from '@/lib/client';
+import { FooterBannerProps } from '@/typings/Typings';
 
 const FooterBanner = ({
   footerBanner: {
@@ -16,7 +17,7 @@ const FooterBanner = ({
     desc,
   },
 }: {
-  footerBanner: any;
+  footerBanner: FooterBannerProps;
 }) => {
   return (
     <div className='footer-banner-container'>

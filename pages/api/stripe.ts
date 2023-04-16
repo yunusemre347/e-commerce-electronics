@@ -1,11 +1,15 @@
 
 import Stripe from 'stripe';
+import { ProductProps } from '@/typings/Typings';
+import { NextApiRequest, NextApiResponse } from 'next';
+import StripeError  from 'stripe';
+
 
 //const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
 
 const stripe = require('stripe')(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
 
-export default async function handler(req: any, res: any) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     console.log("bu nerder", req.body.cartItems)
     try {
@@ -18,7 +22,7 @@ export default async function handler(req: any, res: any) {
             {shipping_rate:'shr_1MwWE3Lb1AiEdsHigTkn8P4t'},
             {shipping_rate:'shr_1MwWF5Lb1AiEdsHi00PN6ljH'},
         ],
-        line_items: req.body.cartItems.map((item:any)=>{
+        line_items: req.body.cartItems.map((item:ProductProps)=>{
             const img = item.image[0].asset._ref;
             const newImg = img.replace('image-','https//cdn.sanity.io/images/xb2rc1si/production/').replace('-webp','.webp');
             console.log('image',newImg)

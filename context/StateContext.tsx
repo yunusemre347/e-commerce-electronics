@@ -1,35 +1,8 @@
-import product from '@/e-commerce-sanity-boosted-free/schemas/product';
 import React, { createContext, useContext, useState, useEffect } from 'react';
-
 import { toast } from 'react-hot-toast';
+import { ContextValues, ProductProps } from '@/typings/Typings';
 
-interface Product {
-  //this product is different so it might cause a problem
-  _id: number;
-  name: string;
-  price: number;
-  quantity: number;
-  image: any;
-}
-
-interface ContextValues {
-  showCart: boolean;
-  cartItems: Product[];
-  totalPrice: number;
-  totalQuantities: number;
-  qty: number;
-  incQty: () => void;
-  decQty: () => void;
-  onAdd: (product: Product, quantity: number) => void;
-  setShowCart: React.Dispatch<React.SetStateAction<boolean>>; // Include setShowCart function
-  toggleCartItemQuantity: (id: number, value: string) => void; // Include toggleCartItemQuantity function
-  onRemove: (id: number, product: Product) => void; // Include toggleCartItemQuantity function
-  setCartItems: React.Dispatch<React.SetStateAction<Product[]>>;
-  setTotalPrice: React.Dispatch<React.SetStateAction<number>>;
-  setTotalQuantities: React.Dispatch<React.SetStateAction<number>>;
-}
-
-const Context = createContext<ContextValues | undefined>(undefined); //default value "{}""
+const Context = createContext<ContextValues | undefined>(undefined);
 // if (Context === undefined) {
 //   throw Error(
 //     'ContextValues must be used inside of ContextValues, ' +
@@ -39,7 +12,7 @@ const Context = createContext<ContextValues | undefined>(undefined); //default v
 
 export const StateContext = ({ children }: { children: React.ReactNode }) => {
   const [showCart, setShowCart] = useState(false);
-  const [cartItems, setCartItems] = useState<Product[]>([]);
+  const [cartItems, setCartItems] = useState<ProductProps[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQuantities, setTotalQuantities] = useState(0);
   const [qty, setQty] = useState(1);
@@ -47,7 +20,7 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
   //let foundProduct:Product;
   let index;
 
-  const onAdd = (product: Product, quantity: number) => {
+  const onAdd = (product: ProductProps, quantity: number) => {
     const checkProductInCart = cartItems.find(
       (item) => item._id === product._id
     );
@@ -56,7 +29,7 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
     );
     setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity);
     if (checkProductInCart) {
-      const updatedCartItems: Product[] = cartItems.map((cartProduct) => {
+      const updatedCartItems: ProductProps[] = cartItems.map((cartProduct) => {
         if (cartProduct._id == product._id)
           return {
             ...cartProduct,
@@ -71,7 +44,7 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
     }
     toast.success(`${qty} ${product.name} added to the cart.`);
   };
-  const onRemove = (id: number, product: Product) => {
+  const onRemove = (id: number, product: ProductProps) => {
     const foundProduct = cartItems.find((item) => item._id === id);
     const newCartItems = cartItems.filter((item) => item._id !== id);
     if (foundProduct) {
@@ -88,7 +61,6 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
 
   const toggleCartItemQuantity = (id: number, value: string) => {
     const foundProduct = cartItems.find((item) => item._id === id);
-    //bunu let değil const yapınca düzeliyor ama çalışıyopr mu bilmiyorum
     const foundProductIndex = cartItems.findIndex(
       (product) => product._id === id
     );
