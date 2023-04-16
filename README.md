@@ -1,38 +1,66 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is an e-commerce project made with Next.js, Sanity and Stripe
 
-## Getting Started
+## Next.js Installation
 
-First, run the development server:
+Create next app:
+```bash
+npm create-next-app
 
+```
+-typescript
+
+-import aliases are '@'
+
+
+-no eslint
+
+-no experimental app directory
+
+
+## Packages Installation
+```bash
+
+npm install -g @sanity/cli
+
+npm create sanity@latest
+
+npm install react-hot-toast  
+
+npm install stripe --save       
+
+npm install --save @sanity/client
+
+npm install --save next-sanity-image  
+
+npm install @stripe/stripe-js 
+
+npm install --save @sanity/image-url
+
+npm install --save canvas-confetti  
+
+npm install react-icons --save      
+
+
+```
+## start Next.js server
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Sanity start dev server
+```bash
+sanity start
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```
+Say yes (y) to the following question.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Demo card
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+if you want to test the payment you can use demo card :
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```bash
+Card no: 4242 4242 4242 4242
+date: 02/42
+cvc: 424
+```
